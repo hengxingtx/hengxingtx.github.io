@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="Hexo, NexT" />
+  <meta name="keywords" content="语言模型 word2vec ngram," />
 
 
 
@@ -80,15 +80,16 @@
 
 
 <meta name="description" content="研究背景:客服聊天记录中判断句子(这里是筛选出的含中文的句子，英文和符号及数字句子的处理可以在我的github中查看处理规则)是否为用户乱输的无意义的字词句 方法:采用语言模型来判定句子的流畅度，判断是否成句。 语言模型：通俗来讲，语言模型就是用来计算一组字成为句子的概率的模型，也就是判断一句话是否随机的概率。 另一个解释：语言模型是假设一门语言所有可能的句子服从一个概率分布，每个句子出现的概率加">
+<meta name="keywords" content="语言模型 word2vec ngram">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Heng Blog">
-<meta property="og:url" content="https://hunterbrain.top/2018/09/17/2018-09-15-语言模型-句子概率-实现/index.html">
+<meta property="og:title" content="语言模型">
+<meta property="og:url" content="https://hunterbrain.top/2018/09/15/语言模型/index.html">
 <meta property="og:site_name" content="Heng Blog">
 <meta property="og:description" content="研究背景:客服聊天记录中判断句子(这里是筛选出的含中文的句子，英文和符号及数字句子的处理可以在我的github中查看处理规则)是否为用户乱输的无意义的字词句 方法:采用语言模型来判定句子的流畅度，判断是否成句。 语言模型：通俗来讲，语言模型就是用来计算一组字成为句子的概率的模型，也就是判断一句话是否随机的概率。 另一个解释：语言模型是假设一门语言所有可能的句子服从一个概率分布，每个句子出现的概率加">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2018-09-30T08:41:03.724Z">
+<meta property="og:updated_time" content="2018-10-08T07:49:11.105Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Heng Blog">
+<meta name="twitter:title" content="语言模型">
 <meta name="twitter:description" content="研究背景:客服聊天记录中判断句子(这里是筛选出的含中文的句子，英文和符号及数字句子的处理可以在我的github中查看处理规则)是否为用户乱输的无意义的字词句 方法:采用语言模型来判定句子的流畅度，判断是否成句。 语言模型：通俗来讲，语言模型就是用来计算一组字成为句子的概率的模型，也就是判断一句话是否随机的概率。 另一个解释：语言模型是假设一门语言所有可能的句子服从一个概率分布，每个句子出现的概率加">
 
 
@@ -119,13 +120,13 @@
 
 
 
-  <link rel="canonical" href="https://hunterbrain.top/2018/09/17/2018-09-15-语言模型-句子概率-实现/"/>
+  <link rel="canonical" href="https://hunterbrain.top/2018/09/15/语言模型/"/>
 
 
 
 
 
-  <title> | Heng Blog</title>
+  <title>语言模型 | Heng Blog</title>
   
 
 
@@ -232,7 +233,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://hunterbrain.top/2018/09/17/2018-09-15-语言模型-句子概率-实现/">
+    <link itemprop="mainEntityOfPage" href="https://hunterbrain.top/2018/09/15/语言模型/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Hunter Brain">
@@ -249,7 +250,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline"></h1>
+          <h1 class="post-title" itemprop="name headline">语言模型</h1>
         
 
         <div class="post-meta">
@@ -261,8 +262,8 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-09-17T10:18:38+08:00">
-                2018-09-17
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-09-15T15:48:14+08:00">
+                2018-09-15
               </time>
             
 
@@ -445,6 +446,12 @@
 
     <footer class="post-footer">
       
+        <div class="post-tags">
+          
+            <a href="/tags/语言模型-word2vec-ngram/" rel="tag"># 语言模型 word2vec ngram</a>
+          
+        </div>
+      
 
       
       
@@ -547,6 +554,15 @@
 
             
 
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                
+                  <span class="site-state-item-count">1</span>
+                  <span class="site-state-item-name">tags</span>
+                
+              </div>
             
 
           </nav>
