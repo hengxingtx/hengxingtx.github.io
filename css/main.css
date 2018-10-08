@@ -1606,7 +1606,7 @@ pre .javascript .function {
   display: block;
   margin: 80px auto 60px;
   width: 8%;
-  height: 2px;
+  height: 1px;
   background: #ccc;
   text-align: center;
 }
@@ -1835,7 +1835,7 @@ pre .javascript .function {
   width: 4px;
   height: 4px;
   border-radius: 50%;
-  background: #79ffff;
+  background: #2ea79e;
 }
 .links-of-blogroll {
   font-size: 13px;
