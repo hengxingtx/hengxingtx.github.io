@@ -152,7 +152,7 @@
   page-home">
     <div class="headband"></div>
     <!--GitHub-start-->
-    <a href="https://hunterbrain.top" class="github-corner" aria-label="View source on GitHub"><svg width="80" height="80" viewBox="0 0 250 250" style="fill:#70B7FD; color:#fff; position: absolute; top: 0; border: 0; right: 0;" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a><style>.github-corner:hover .octo-arm{animation:octocat-wave 560ms ease-in-out}@keyframes octocat-wave{0%,100%{transform:rotate(0)}20%,60%{transform:rotate(-25deg)}40%,80%{transform:rotate(10deg)}}@media (max-width:500px){.github-corner:hover .octo-arm{animation:none}.github-corner .octo-arm{animation:octocat-wave 560ms ease-in-out}}</style>
+    <a href="https://github.com/hengxingtx"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png" alt="Fork me on GitHub"></a>
     <!--GitHub-end-->
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -520,8 +520,16 @@
         
           
           Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub.
-Quick
-          ...
+Quick StartCreate a new post1$ hexo new "My New Post"
+More info: Writing
+Run server1$ hexo server
+More info: Server
+Generate static files1$ hexo generate
+More info: Generating
+Deploy to remote sites1$ hexo deploy
+More info: Deployment
+
+          
           <!--noindex-->
           <div class="post-button text-center">
             <a class="btn" href="/2018/10/08/hello-world/#more" rel="contents">
@@ -680,7 +688,9 @@ Quick
           研究背景:客服聊天记录中判断句子(这里是筛选出的含中文的句子，英文和符号及数字句子的处理可以在我的github中查看处理规则)是否为用户乱输的无意义的字词句
 方法:采用语言模型来判定句子的流畅度，判断是否成句。
 语言模型：通俗来讲，语言模型就是用来计算一组字成为句子的概率的模型，也就是判断一句话是否随机的概率。
-另一个解释：语言模型是假设一门语言所有可能的句子服从一个概率分布，每个句子出现的概率加
+另一个解释：语言模型是假设一门语言所有可能的句子服从一个概率分布，每个句子出现的概率加起来是1，那么语言模型的任务就是预测每个句子在语言中出现的概率，对于语言中常见的句子，一个好的语言模型应该得到相对高的概率，对不合语法的句子，计算出的概率则趋近于零。
+给定词语序列：$ S = W_1,W_2, …, W_k $，判断它成为句子的概率可表示为：$ P(S) = P(W_1,W_2,…,W_k) $
+我们使用$ P(w_3|w_1,w_2)$, 表示词$ w_1,w_2$后面是词$ w_3$的概率，现在我们需要计算一整句话的概率，例如“我,爱,北京,天安门”,需要计算“我爱北京天安门“同时出现 的概率，即$ P(我爱北京天安门) = P(我)P(爱|我)P(北京|我爱)P(天安门|我爱北京)$，计算这个概率的模型就叫做语言模型(Language Model)，随后即可用概率的链式法则来评估这一组随机变量的联合概率。一般的：$P(S) = P(w_1,w_2,…,w_k) = 
           ...
           <!--noindex-->
           <div class="post-button text-center">
@@ -781,15 +791,6 @@ Quick
             
 
             
-              
-              
-              <div class="site-state-item site-state-tags">
-                
-                  <span class="site-state-item-count">1</span>
-                  <span class="site-state-item-name">标签</span>
-                
-              </div>
-            
 
           </nav>
 
@@ -870,15 +871,13 @@ Quick
 </div>
 
 
-  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+  
 
 
 
-  <span class="post-meta-divider">|</span>
 
 
-
-  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Mist</a> v5.1.4</div>
+ 
 
 
 
@@ -1038,6 +1037,28 @@ Quick
   
 
   
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  
+
 
   
 
