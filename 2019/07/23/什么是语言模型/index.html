@@ -1,0 +1,800 @@
+<!DOCTYPE html>
+<html  lang="zh">
+<head>
+    <meta charset="utf-8" />
+
+<meta name="generator" content="Hexo 3.7.1" />
+
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+
+<title>Heng Blog</title>
+
+
+    <meta name="description" content="机器人对你说：您的输入语句不通，语文是数学老师教的吧！背景:本文由下面一轮对话引出： 你：“过大嘎达发的撒旦法而我却人是” 机器人：“您的输入语句不通，语文是数学老师教的吧！” 那么机器人到底是怎么判断出一句话语句是否通顺呢？在客服场景中又有什么实际应用呢？ 方法:客服场景中有时需要判断用户的问句是否为乱输的无意义的，返回“请认真聊天，不要乱输”比返回万能回复会显得更加的智能，也可以用在智能质检">
+<meta name="keywords" content="机器学习,自然语言处理,深度学习,概率论,微积分,线性代数">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Heng Blog">
+<meta property="og:url" content="https://hunterbrain.top/2019/07/23/什么是语言模型/index.html">
+<meta property="og:site_name" content="Heng Blog">
+<meta property="og:description" content="机器人对你说：您的输入语句不通，语文是数学老师教的吧！背景:本文由下面一轮对话引出： 你：“过大嘎达发的撒旦法而我却人是” 机器人：“您的输入语句不通，语文是数学老师教的吧！” 那么机器人到底是怎么判断出一句话语句是否通顺呢？在客服场景中又有什么实际应用呢？ 方法:客服场景中有时需要判断用户的问句是否为乱输的无意义的，返回“请认真聊天，不要乱输”比返回万能回复会显得更加的智能，也可以用在智能质检">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="https://hunterbrain.top/images/og_image.png">
+<meta property="og:updated_time" content="2019-07-23T10:46:38.925Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Heng Blog">
+<meta name="twitter:description" content="机器人对你说：您的输入语句不通，语文是数学老师教的吧！背景:本文由下面一轮对话引出： 你：“过大嘎达发的撒旦法而我却人是” 机器人：“您的输入语句不通，语文是数学老师教的吧！” 那么机器人到底是怎么判断出一句话语句是否通顺呢？在客服场景中又有什么实际应用呢？ 方法:客服场景中有时需要判断用户的问句是否为乱输的无意义的，返回“请认真聊天，不要乱输”比返回万能回复会显得更加的智能，也可以用在智能质检">
+<meta name="twitter:image" content="https://hunterbrain.top/images/og_image.png">
+
+
+
+
+
+
+
+<link rel="icon" href="/images/favicon.svg">
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.7.2/css/bulma.css">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Ubuntu:400,600|Source+Code+Pro">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@9.12.0/styles/atom-one-light.css">
+
+
+    
+    
+<style>body>.footer,body>.navbar,body>.section{opacity:0}</style>
+
+    
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/css/lightgallery.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/css/justifiedGallery.min.css">
+
+    
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/outdatedbrowser@1.1.5/outdatedbrowser/outdatedbrowser.min.css">
+
+    
+    
+    
+    
+<link rel="stylesheet" href="/css/back-to-top.css">
+
+    
+    
+    
+    
+    
+    
+    
+    <link rel="stylesheet" href="/css/progressbar.css">
+<script src="https://cdn.jsdelivr.net/npm/pace-js@1.0.2/pace.min.js"></script>
+    
+    
+    
+
+
+<link rel="stylesheet" href="/css/style.css">
+</head>
+<body class="is-2-column">
+    <nav class="navbar navbar-main">
+    <div class="container">
+        <div class="navbar-brand is-flex-center">
+            <a class="navbar-item navbar-logo" href="/">
+            
+                <img src="/images/logo.svg" alt="" height="28">
+            
+            </a>
+        </div>
+        <div class="navbar-menu">
+            
+            <div class="navbar-start">
+                
+                <a class="navbar-item"
+                href="/">首页</a>
+                
+                <a class="navbar-item"
+                href="/archives">归档</a>
+                
+                <a class="navbar-item"
+                href="/book">读后感</a>
+                
+                <a class="navbar-item"
+                href="/film">观后感</a>
+                
+                <a class="navbar-item"
+                href="/nlp">NLP</a>
+                
+                <a class="navbar-item"
+                href="/about">关于</a>
+                
+            </div>
+            
+            <div class="navbar-end">
+                
+                    
+                    <a class="navbar-item" target="_blank" title="Download on GitHub" href="https://github.com/hengxingtx">
+                        
+                        <i class="fab fa-github"></i>
+                        
+                    </a>
+                    
+                
+                
+                
+                <a class="navbar-item search" title="Search" href="javascript:;">
+                    <i class="fas fa-search"></i>
+                </a>
+                
+            </div>
+        </div>
+    </div>
+</nav>
+    
+    <section class="section">
+        <div class="container">
+            <div class="columns">
+                <div class="column is-8-tablet is-9-desktop is-9-widescreen has-order-2 column-main">
+<div class="card">
+    
+    <div class="card-content article ">
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2019-07-23T06:31:48.007Z">2019-07-23</time>
+                
+                
+                <span class="level-item has-text-grey">
+                    
+                    
+                    11 minutes read (About 1646 words)
+                </span>
+                
+                
+            </div>
+        </div>
+        
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                
+            
+        </h1>
+        <div class="content">
+            <p><img src="../image/LanguageModel.jpg" alt="LanguageModel"></p>
+<h1 id="机器人对你说：您的输入语句不通，语文是数学老师教的吧！"><a href="#机器人对你说：您的输入语句不通，语文是数学老师教的吧！" class="headerlink" title="机器人对你说：您的输入语句不通，语文是数学老师教的吧！"></a>机器人对你说：您的输入语句不通，语文是数学老师教的吧！</h1><h2 id="背景"><a href="#背景" class="headerlink" title="背景:"></a>背景:</h2><p><strong>本文由下面一轮对话引出：</strong></p>
+<p>你：“过大嘎达发的撒旦法而我却人是”</p>
+<p>机器人：“您的输入语句不通，语文是数学老师教的吧！”</p>
+<p>那么机器人到底是怎么判断出一句话语句是否通顺呢？在客服场景中又有什么实际应用呢？</p>
+<h2 id="方法"><a href="#方法" class="headerlink" title="方法:"></a>方法:</h2><p>客服场景中有时需要判断用户的问句是否为乱输的无意义的，返回“请认真聊天，不要乱输”比返回万能回复会显得更加的智能，也可以用在智能质检上，检测答案或者问句的编写是否合理。</p>
+<p>我们可以采用<strong>语言模型</strong>来判定句子的流畅度，并判断是否成句。</p>
+<h3 id="语言模型："><a href="#语言模型：" class="headerlink" title="语言模型："></a>语言模型：</h3><p>通俗来讲，语言模型就是用来计算一组字成为句子的概率的模型，也就是判断一句话是否随机的概率。</p>
+<p>另一个解释是：语言模型是假设一门语言所有可能的句子服从一个概率分布，每个句子出现的概率加起来是1，那么语言模型的任务就是预测每个句子在语言中出现的概率，对于语言中常见的句子，一个好的语言模型应该得到相对高的概率，对不合语法的句子，计算出的概率则趋近于零。</p>
+<p>给定词语序列：$ S = W_1,W_2, …, W_k $，判断它成为句子的概率可表示为：$ P(S) = P(W_1,W_2,…,W_k) $</p>
+<p>我们使用$ P(w_3|w_1,w_2)$, 表示词$ w_1,w_2$后面是词$ w_3$的概率，现在我们需要计算一整句话的概率，例如“我,爱,北京,天安门”,需要计算“我爱北京天安门“同时出现 的概率，即$ P(我爱北京天安门) = P(我)P(爱|我)P(北京|我爱)P(天安门|我爱北京)$，计算这个概率的模型就叫做语言模型(Language Model)，随后即可用概率的链式法则来评估这一组随机变量的联合概率。一般的：$P(S) = P(w_1,w_2,…,w_k) = \prod_{i=1}^k P(w_i|w_1,w_2,…,w_{k-1})$</p>
+<p>可这种方法会导致：</p>
+<ol>
+<li>参数空间过大, 试想按上面方式计算$P(w_5 |w_1 ,w_2 ,w_3 ,w_4 )$，这里$w_i$都有一个词典大小取值的可能，记作|V|，则该模型的参数个数是$|V|^5$，而且这还不包含$P(w_4 | w_1, w_2, w_3)$的个数，可以看到这样去计算条件概率会使语言模型参数个数过多而无法实用.(更为通俗的理解：还是以”我爱北京天安门“为例，$P(爱|我)$ 需要计算)</li>
+<li>数据非常稀疏，导致最大似然概率接近0.(为什么最大似然接近0，本人在另一篇中对此做了解释，链接:)</li>
+</ol>
+<h5 id="统计语言模型"><a href="#统计语言模型" class="headerlink" title="统计语言模型"></a>统计语言模型</h5><p>在统计语言模型中为了减少参数数量，基于马尔可夫假设，采用2-gram模型，即我们可以认为下一个词的出现仅依赖于他前面的一个词，因此二元模型简化为：</p>
+<p>$P(S) = P(w_1)\prod_{i=2}^kP(w_i|w_{i-1})$ </p>
+<p>在此基础上进行拓展可演化为$n-gram$模型，假定文本中的每个词$w_i$只和其前面$n-1$个词相关，这时$P(w_i|w_1,w_2,…w_{i-1})=P(w_i|w_{i-n+1},w_{i-n+2},…w_{i-1})$</p>
+<p>这称为$n-gram$模型，其中$n$表示当前单词依赖它前面单词的个数，通常$n$取2、3、4,在本任务中，我们对$n=2，3$的情况做了实验，且对分词与未分词的情况分别做了实验。最终在$2-gram$且不分词的情况下效果达到最优。究其原因，可能是在本任务中，若是用户输的乱序文本则该句中基本每两个字之间都不成词。</p>
+<p>$n-gram$ 模型的参数一般采用最大似然估计方法：</p>
+<p>$P(w_i|w_{i-1})=\frac{count(w_{i-1},w_i)}{count(w_{i-1]})}$ 其中，count(x)表示词x在语料中出现的次数。</p>
+<h6 id="例子"><a href="#例子" class="headerlink" title="例子"></a>例子</h6><p>以真实句子为例对模型做一般说明。</p>
+<p>例如，计算“今天能不能发货?”和”发货能今天不能”这两句话的ngram值。</p>
+<p>以词级别为例，分词之后的句子为: 今天\能\不能\发货 与发货\能\今天\不能?</p>
+<p>在本问题中，我选取人工客服聊天记录共100M作为训练预料，用来统计$n-gram$词频)各词的频率如下表所示:</p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>词</th>
+<th>词频</th>
+<th>2-gram词</th>
+<th>词频</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>今天</td>
+<td>447</td>
+<td>今天能</td>
+<td>23</td>
+</tr>
+<tr>
+<td>能</td>
+<td>844</td>
+<td>能不能</td>
+<td>122</td>
+</tr>
+<tr>
+<td>不能</td>
+<td>481</td>
+<td>不能发货</td>
+<td>3</td>
+</tr>
+<tr>
+<td>发货</td>
+<td>501</td>
+<td>发货?</td>
+<td>20</td>
+</tr>
+<tr>
+<td>？</td>
+<td>3646</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>这里还需对句子加入起始符号与终止符号(我加的是start与end，不加的话会损失起始与终止的信息)，于是在此基础上加入$count(start今天)$与$count(?end)$</p>
+<p>于是2-gram分值:$P(今天能不能发货？)=P(start)<em>P(今天|start)</em>P(能|今天)<em>P(不能|能)</em>P(发货|不能)<em>P(？|发货)</em>P(end|？)$ 根据条件概率$P(A|B)=P(AB)/P(B)$,所以</p>
+<p>$P(今天能不能发货？)=P(start今天)<em>P(今天能)</em>P(能不能)<em>P(不能发货)</em>(发货？)/（P(今天)<em>P(能)</em>P(不能)*P(发货)）$=</p>
+<p>而在这个问题中，取得该词的概率可以近似为该词词频数/总词频数，即$P(今天)=count(今天)/总词频数=447/6066\approx0.07$ 以此类推，</p>
+<p>这样我们可以得到两个句子各自成句的概率：</p>
+<p>$P(今天能不能发货？)=0.000031$</p>
+<p>$P(发货能今天不能？)=0.0000000053$</p>
+<p>故而“今天能不能发货”比“发货能今天不能”更加流畅。</p>
+<p>进行预测概率时，除了统计语言模型外，目前使用较多的还有神经语言模型，这里就不详细展开了，大家感兴趣的话可以自己查查。</p>
+<h2 id="参考："><a href="#参考：" class="headerlink" title="参考："></a>参考：</h2><p><a href="https://blog.csdn.net/a635661820/article/details/43906731" target="_blank" rel="noopener">https://blog.csdn.net/a635661820/article/details/43906731</a></p>
+<p><a href="https://zhuanlan.zhihu.com/machinelearningpku" target="_blank" rel="noopener">https://zhuanlan.zhihu.com/machinelearningpku</a></p>
+<p>《数学之美》第三章 统计语言模型</p>
+<p><a href="https://juejin.im/post/598c1941f265da3e190da56b" target="_blank" rel="noopener">https://juejin.im/post/598c1941f265da3e190da56b</a></p>
+
+        </div>
+        
+        
+        
+    </div>
+</div>
+
+
+
+<div class="card">
+    <div class="card-content">
+        <h3 class="menu-label has-text-centered">Like this article? Support the author with</h3>
+        <div class="buttons is-centered">
+            
+                
+<div class="notification is-danger">
+    You forgot to set the <code>qrcode</code> for Alipay. Please set it in <code>_config.yml</code>.
+</div>
+
+                
+                
+<div class="notification is-danger">
+    You forgot to set the <code>qrcode</code> for Wechat. Please set it in <code>_config.yml</code>.
+</div>
+
+                
+                <!-- Visit https://www.paypal.com/donate/buttons/ to get your donate button -->
+
+<div class="notification is-danger">
+    You forgot to set the <code>business</code> and <code>currency_code</code> for Paypal. Please set it in <code>_config.yml</code>.
+</div>
+
+                
+                
+<div class="notification is-danger">
+    You forgot to set the <code>url</code> Patreon. Please set it in <code>_config.yml</code>.
+</div>
+
+                
+        </div>
+    </div>
+</div>
+
+
+
+<div class="card card-transparent">
+    <div class="level post-navigation is-flex-wrap is-mobile">
+        
+        
+        <div class="level-end">
+            <a class="level level-item has-link-grey  article-nav-next" href="/2018/10/09/最大似然-从朴素贝叶斯谈起/">
+                <span class="level-item">最大似然-从朴素贝叶斯谈起</span>
+                <i class="level-item fas fa-chevron-right"></i>
+            </a>
+        </div>
+        
+    </div>
+</div>
+
+
+</div>
+                
+    
+
+
+
+<div class="column is-4-tablet is-3-desktop is-3-widescreen  has-order-1 column-left ">
+    
+        
+<div class="card widget">
+    <div class="card-content">
+        <nav class="level">
+            <div class="level-item has-text-centered" style="flex-shrink: 1">
+                <div>
+                    
+                    <figure class="image is-128x128 has-mb-6">
+                        <img class="" src="/./images/head.jpg" alt="Hunter Gao">
+                    </figure>
+                    
+                    <p class="is-size-4 is-block">
+                        Hunter Gao
+                    </p>
+                    
+                    
+                    <p class="is-size-6 is-block">
+                        NLP algorithm engineer
+                    </p>
+                    
+                    
+                    <p class="is-size-6 is-flex is-flex-center has-text-grey">
+                        <i class="fas fa-map-marker-alt has-mr-7"></i>
+                        <span>北京</span>
+                    </p>
+                    
+                </div>
+            </div>
+        </nav>
+        <nav class="level is-mobile">
+            <div class="level-item has-text-centered is-marginless">
+                <div>
+                    <p class="heading">
+                        Entradas
+                    </p>
+                    <p class="title has-text-weight-normal">
+                        6
+                    </p>
+                </div>
+            </div>
+            <div class="level-item has-text-centered is-marginless">
+                <div>
+                    <p class="heading">
+                        Categorias
+                    </p>
+                    <p class="title has-text-weight-normal">
+                        0
+                    </p>
+                </div>
+            </div>
+            <div class="level-item has-text-centered is-marginless">
+                <div>
+                    <p class="heading">
+                        Etiquetas
+                    </p>
+                    <p class="title has-text-weight-normal">
+                        0
+                    </p>
+                </div>
+            </div>
+        </nav>
+        
+        <div class="level">
+            <a class="level-item button is-link is-rounded" href="https://github.com/hengxintx" target="_blank">
+                SEGUIR</a>
+        </div>
+        
+        
+        
+        <div class="level is-mobile">
+            
+            <a class="level-item button is-white is-marginless" target="_blank"
+                title="知乎" href="https://zhihu.com/hengxingtx">
+                
+                <i class="fab fa-github"></i>
+                
+            </a>
+            
+        </div>
+        
+    </div>
+</div>
+    
+        
+    
+        <div class="card widget">
+    <div class="card-content">
+        <div class="menu">
+        <h3 class="menu-label">
+            Links
+        </h3>
+        <ul class="menu-list">
+        
+            <li>
+                <a class="level is-mobile" href="https://hexo.io" target="_blank">
+                    <span class="level-left">
+                        <span class="level-item">Hexo</span>
+                    </span>
+                    <span class="level-right">
+                        <span class="level-item tag">hexo.io</span>
+                    </span>
+                </a>
+            </li>
+        
+            <li>
+                <a class="level is-mobile" href="https://github.com/ppoffice" target="_blank">
+                    <span class="level-left">
+                        <span class="level-item">PPOffice</span>
+                    </span>
+                    <span class="level-right">
+                        <span class="level-item tag">github.com</span>
+                    </span>
+                </a>
+            </li>
+        
+        </ul>
+        </div>
+    </div>
+</div>
+
+    
+        
+<div class="card widget">
+    <div class="card-content">
+        <div class="menu">
+            <h3 class="menu-label">
+                Categorias
+            </h3>
+            <ul class="menu-list">
+            
+            </ul>
+        </div>
+    </div>
+</div>
+    
+        
+    
+        <div class="card widget">
+    <div class="card-content">
+        <h3 class="menu-label">
+            Recientes
+        </h3>
+        
+        <article class="media">
+            
+            <a href="/2019/07/23/什么是语言模型/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-07-23T06:31:48.007Z">2019-07-23</time></div>
+                    <a href="/2019/07/23/什么是语言模型/" class="title has-link-black-ter is-size-6 has-text-weight-normal"></a>
+                    <p class="is-size-7 is-uppercase">
+                        
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2018/10/09/最大似然-从朴素贝叶斯谈起/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="最大似然-从朴素贝叶斯谈起">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2018-10-09T10:14:40.000Z">2018-10-09</time></div>
+                    <a href="/2018/10/09/最大似然-从朴素贝叶斯谈起/" class="title has-link-black-ter is-size-6 has-text-weight-normal">最大似然-从朴素贝叶斯谈起</a>
+                    <p class="is-size-7 is-uppercase">
+                        
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2018/10/08/hello-world/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="Hello World">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2018-10-08T03:49:46.920Z">2018-10-08</time></div>
+                    <a href="/2018/10/08/hello-world/" class="title has-link-black-ter is-size-6 has-text-weight-normal">Hello World</a>
+                    <p class="is-size-7 is-uppercase">
+                        
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2018/09/15/语言模型-从闲聊识别谈起/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="语言模型-从闲聊识别谈起">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2018-09-15T07:48:14.000Z">2018-09-15</time></div>
+                    <a href="/2018/09/15/语言模型-从闲聊识别谈起/" class="title has-link-black-ter is-size-6 has-text-weight-normal">语言模型-从闲聊识别谈起</a>
+                    <p class="is-size-7 is-uppercase">
+                        
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2018/09/01/聚类算法详解-从文本聚类谈起/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="聚类算法详解-从文本聚类谈起">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2018-09-01T06:31:27.000Z">2018-09-01</time></div>
+                    <a href="/2018/09/01/聚类算法详解-从文本聚类谈起/" class="title has-link-black-ter is-size-6 has-text-weight-normal">聚类算法详解-从文本聚类谈起</a>
+                    <p class="is-size-7 is-uppercase">
+                        
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+    </div>
+</div>
+    
+        <div class="card widget">
+    <div class="card-content">
+        <div class="menu">
+        <h3 class="menu-label">
+            Archivos
+        </h3>
+        <ul class="menu-list">
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2019/07/">
+                <span class="level-start">
+                    <span class="level-item">July 2019</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2018/10/">
+                <span class="level-start">
+                    <span class="level-item">October 2018</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">2</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2018/09/">
+                <span class="level-start">
+                    <span class="level-item">September 2018</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">3</span>
+                </span>
+            </a>
+        </li>
+        
+        </ul>
+        </div>
+    </div>
+</div>
+    
+        <div class="card widget">
+    <div class="card-content">
+        <div class="menu">
+            <h3 class="menu-label">
+                Etiquetas
+            </h3>
+            <div class="field is-grouped is-grouped-multiline">
+                
+            </div>
+        </div>
+    </div>
+</div>
+    
+    
+        <div class="column-right-shadow is-hidden-widescreen ">
+        
+        </div>
+    
+</div>
+
+                
+            </div>
+        </div>
+    </section>
+    <footer class="footer">
+    <div class="container">
+        <div class="level">
+            <div class="level-start has-text-centered-mobile">
+                <a class="footer-logo is-block has-mb-6" href="/">
+                
+                    <img src="/images/logo.svg" alt="" height="28">
+                
+                </a>
+                <p class="is-size-7">
+                &copy; 2019 Heng&nbsp;
+                Powered by <a href="https://hexo.io/" target="_blank">Hexo</a> & <a
+                        href="https://github.com/ppoffice/hexo-theme-icarus" target="_blank">Icarus</a>
+                
+                </p>
+            </div>
+            <div class="level-end">
+            
+                <div class="field has-addons is-flex-center-mobile has-mt-5-mobile is-flex-wrap is-flex-middle">
+                
+                <p class="control">
+                    <a class="button is-white is-large" target="_blank" title="Creative Commons" href="https://creativecommons.org/">
+                        
+                        <i class="fab fa-creative-commons"></i>
+                        
+                    </a>
+                </p>
+                
+                <p class="control">
+                    <a class="button is-white is-large" target="_blank" title="Attribution 4.0 International" href="https://creativecommons.org/licenses/by/4.0/">
+                        
+                        <i class="fab fa-creative-commons-by"></i>
+                        
+                    </a>
+                </p>
+                
+                <p class="control">
+                    <a class="button is-white is-large" target="_blank" title="Download on GitHub" href="https://github.com/hengxingtx">
+                        
+                        <i class="fab fa-github"></i>
+                        
+                    </a>
+                </p>
+                
+                </div>
+            
+            </div>
+        </div>
+    </div>
+</footer>
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/moment@2.22.2/min/moment-with-locales.min.js"></script>
+<script>moment.locale("zh-Hans");</script>
+
+<script>
+var IcarusThemeSettings = {
+    article: {
+        highlight: {
+            clipboard: true,
+            fold: 'unfolded'
+        }
+    }
+};
+</script>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/clipboard@2.0.4/dist/clipboard.min.js" defer></script>
+
+
+
+    
+    
+<script src="/js/animation.js"></script>
+
+    
+    
+<script src="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/js/lightgallery.min.js" defer></script>
+<script src="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/js/jquery.justifiedGallery.min.js" defer></script>
+<script src="/js/gallery.js" defer></script>
+
+    
+    
+<div id="outdated">
+    <h6>Your browser is out-of-date!</h6>
+    <p>Update your browser to view this website correctly. <a id="btnUpdateBrowser" href="http://outdatedbrowser.com/">Update
+            my browser now </a></p>
+    <p class="last"><a href="#" id="btnCloseUpdateBrowser" title="Close">&times;</a></p>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/outdatedbrowser@1.1.5/outdatedbrowser/outdatedbrowser.min.js" defer></script>
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        outdatedBrowser({
+            bgColor: '#f25648',
+            color: '#ffffff',
+            lowerThan: 'flex'
+        });
+    });
+</script>
+
+    
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@2.7.5/unpacked/MathJax.js?config=TeX-MML-AM_CHTML" defer></script>
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+    MathJax.Hub.Config({
+        'HTML-CSS': {
+            matchFontHeight: false
+        },
+        SVG: {
+            matchFontHeight: false
+        },
+        CommonHTML: {
+            matchFontHeight: false
+        },
+        tex2jax: {
+            inlineMath: [
+                ['$','$'],
+                ['\\(','\\)']
+            ]
+        }
+    });
+});
+</script>
+    
+    
+<a id="back-to-top" title="Back to Top" href="javascript:;">
+    <i class="fas fa-chevron-up"></i>
+</a>
+<script src="/js/back-to-top.js" defer></script>
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+
+
+<script src="/js/main.js" defer></script>
+
+    
+    <div class="searchbox ins-search">
+    <div class="searchbox-container ins-search-container">
+        <div class="searchbox-input-wrapper">
+            <input type="text" class="searchbox-input ins-search-input" placeholder="Type something..." />
+            <span class="searchbox-close ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="searchbox-result-wrapper ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+    (function (window) {
+        var INSIGHT_CONFIG = {
+            TRANSLATION: {
+                POSTS: 'Entradas',
+                PAGES: 'Pages',
+                CATEGORIES: 'Categorias',
+                TAGS: 'Etiquetas',
+                UNTITLED: '(Untitled)',
+            },
+            CONTENT_URL: '/content.json',
+        };
+        window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+    })(window);
+</script>
+<script src="/js/insight.js" defer></script>
+<link rel="stylesheet" href="/css/search.css">
+<link rel="stylesheet" href="/css/insight.css">
+    
+</body>
+</html>
