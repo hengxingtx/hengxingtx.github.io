@@ -10,19 +10,19 @@
 <title>Heng Blog</title>
 
 
-    <meta name="description" content="机器人对你说：您的输入语句不通，语文是数学老师教的吧！背景:本文由下面一轮对话引出： 你：“过大嘎达发的撒旦法而我却人是” 机器人：“您的输入语句不通，语文是数学老师教的吧！” 那么机器人到底是怎么判断出一句话语句是否通顺呢？在客服场景中又有什么实际应用呢？ 方法:客服场景中有时需要判断用户的问句是否为乱输的无意义的，返回“请认真聊天，不要乱输”比返回万能回复会显得更加的智能，也可以用在智能质检">
+    <meta name="description" content="机器人对你说：您的输入语句不通，语文是数学老师教的吧！背景:本文由下面一轮对话引出： 你：“过大嘎达发的撒旦法而我却人是” 机器人：“您的输入语句不通，语文是数学老师教的吧！” 那么机器人到底是怎么判断出一句话语句是否通顺呢？在客服场景中又有什么实际应用呢？">
 <meta name="keywords" content="机器学习,自然语言处理,深度学习,概率论,微积分,线性代数">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Heng Blog">
 <meta property="og:url" content="https://hunterbrain.top/2019/07/23/什么是语言模型/index.html">
 <meta property="og:site_name" content="Heng Blog">
-<meta property="og:description" content="机器人对你说：您的输入语句不通，语文是数学老师教的吧！背景:本文由下面一轮对话引出： 你：“过大嘎达发的撒旦法而我却人是” 机器人：“您的输入语句不通，语文是数学老师教的吧！” 那么机器人到底是怎么判断出一句话语句是否通顺呢？在客服场景中又有什么实际应用呢？ 方法:客服场景中有时需要判断用户的问句是否为乱输的无意义的，返回“请认真聊天，不要乱输”比返回万能回复会显得更加的智能，也可以用在智能质检">
+<meta property="og:description" content="机器人对你说：您的输入语句不通，语文是数学老师教的吧！背景:本文由下面一轮对话引出： 你：“过大嘎达发的撒旦法而我却人是” 机器人：“您的输入语句不通，语文是数学老师教的吧！” 那么机器人到底是怎么判断出一句话语句是否通顺呢？在客服场景中又有什么实际应用呢？">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="https://hunterbrain.top/images/og_image.png">
-<meta property="og:updated_time" content="2019-07-23T10:46:38.925Z">
+<meta property="og:updated_time" content="2019-10-23T10:36:03.519Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Heng Blog">
-<meta name="twitter:description" content="机器人对你说：您的输入语句不通，语文是数学老师教的吧！背景:本文由下面一轮对话引出： 你：“过大嘎达发的撒旦法而我却人是” 机器人：“您的输入语句不通，语文是数学老师教的吧！” 那么机器人到底是怎么判断出一句话语句是否通顺呢？在客服场景中又有什么实际应用呢？ 方法:客服场景中有时需要判断用户的问句是否为乱输的无意义的，返回“请认真聊天，不要乱输”比返回万能回复会显得更加的智能，也可以用在智能质检">
+<meta name="twitter:description" content="机器人对你说：您的输入语句不通，语文是数学老师教的吧！背景:本文由下面一轮对话引出： 你：“过大嘎达发的撒旦法而我却人是” 机器人：“您的输入语句不通，语文是数学老师教的吧！” 那么机器人到底是怎么判断出一句话语句是否通顺呢？在客服场景中又有什么实际应用呢？">
 <meta name="twitter:image" content="https://hunterbrain.top/images/og_image.png">
 
 
@@ -146,7 +146,7 @@
                 <span class="level-item has-text-grey">
                     
                     
-                    11 minutes read (About 1646 words)
+                    11 minutes read (About 1647 words)
                 </span>
                 
                 
@@ -164,6 +164,7 @@
 <p>你：“过大嘎达发的撒旦法而我却人是”</p>
 <p>机器人：“您的输入语句不通，语文是数学老师教的吧！”</p>
 <p>那么机器人到底是怎么判断出一句话语句是否通顺呢？在客服场景中又有什么实际应用呢？</p>
+<a id="more"></a>
 <h2 id="方法"><a href="#方法" class="headerlink" title="方法:"></a>方法:</h2><p>客服场景中有时需要判断用户的问句是否为乱输的无意义的，返回“请认真聊天，不要乱输”比返回万能回复会显得更加的智能，也可以用在智能质检上，检测答案或者问句的编写是否合理。</p>
 <p>我们可以采用<strong>语言模型</strong>来判定句子的流畅度，并判断是否成句。</p>
 <h3 id="语言模型："><a href="#语言模型：" class="headerlink" title="语言模型："></a>语言模型：</h3><p>通俗来讲，语言模型就是用来计算一组字成为句子的概率的模型，也就是判断一句话是否随机的概率。</p>
@@ -185,6 +186,7 @@
 <p>例如，计算“今天能不能发货?”和”发货能今天不能”这两句话的ngram值。</p>
 <p>以词级别为例，分词之后的句子为: 今天\能\不能\发货 与发货\能\今天\不能?</p>
 <p>在本问题中，我选取人工客服聊天记录共100M作为训练预料，用来统计$n-gram$词频)各词的频率如下表所示:</p>
+<div class="table-container">
 <table>
 <thead>
 <tr>
@@ -194,7 +196,8 @@
 <th>词频</th>
 </tr>
 </thead>
-<tbody><tr>
+<tbody>
+<tr>
 <td>今天</td>
 <td>447</td>
 <td>今天能</td>
@@ -222,12 +225,13 @@
 <td>？</td>
 <td>3646</td>
 <td></td>
-<td></td>
 </tr>
-</tbody></table>
+</tbody>
+</table>
+</div>
 <p>这里还需对句子加入起始符号与终止符号(我加的是start与end，不加的话会损失起始与终止的信息)，于是在此基础上加入$count(start今天)$与$count(?end)$</p>
 <p>于是2-gram分值:$P(今天能不能发货？)=P(start)<em>P(今天|start)</em>P(能|今天)<em>P(不能|能)</em>P(发货|不能)<em>P(？|发货)</em>P(end|？)$ 根据条件概率$P(A|B)=P(AB)/P(B)$,所以</p>
-<p>$P(今天能不能发货？)=P(start今天)<em>P(今天能)<em>P(能不能)</em>P(不能发货)</em>(发货？)/（P(今天)<em>P(能)</em>P(不能)*P(发货)）$=</p>
+<p>$P(今天能不能发货？)=P(start今天)<em>P(今天能)</em>P(能不能)<em>P(不能发货)</em>(发货？)/（P(今天)<em>P(能)</em>P(不能)*P(发货)）$=</p>
 <p>而在这个问题中，取得该词的概率可以近似为该词词频数/总词频数，即$P(今天)=count(今天)/总词频数=447/6066\approx0.07$ 以此类推，</p>
 <p>这样我们可以得到两个句子各自成句的概率：</p>
 <p>$P(今天能不能发货？)=0.000031$</p>
@@ -287,6 +291,13 @@
 <div class="card card-transparent">
     <div class="level post-navigation is-flex-wrap is-mobile">
         
+        <div class="level-start">
+            <a class="level level-item has-link-grey  article-nav-prev" href="/2019/10/23/语言模型-从闲聊识别谈起-1/">
+                <i class="level-item fas fa-chevron-left"></i>
+                <span class="level-item">语言模型-从闲聊识别谈起</span>
+            </a>
+        </div>
+        
         
         <div class="level-end">
             <a class="level level-item has-link-grey  article-nav-next" href="/2018/10/09/最大似然-从朴素贝叶斯谈起/">
@@ -305,7 +316,7 @@
 
 
 
-<div class="column is-4-tablet is-3-desktop is-3-widescreen  has-order-1 column-left ">
+<div class="column is-4-tablet is-3-desktop is-3-widescreen  has-order-1 column-left is-sticky">
     
         
 <div class="card widget">
@@ -340,17 +351,17 @@
             <div class="level-item has-text-centered is-marginless">
                 <div>
                     <p class="heading">
-                        Entradas
+                        Posts
                     </p>
                     <p class="title has-text-weight-normal">
-                        6
+                        12
                     </p>
                 </div>
             </div>
             <div class="level-item has-text-centered is-marginless">
                 <div>
                     <p class="heading">
-                        Categorias
+                        Categories
                     </p>
                     <p class="title has-text-weight-normal">
                         0
@@ -360,10 +371,10 @@
             <div class="level-item has-text-centered is-marginless">
                 <div>
                     <p class="heading">
-                        Etiquetas
+                        Tag
                     </p>
                     <p class="title has-text-weight-normal">
-                        0
+                        1
                     </p>
                 </div>
             </div>
@@ -371,7 +382,7 @@
         
         <div class="level">
             <a class="level-item button is-link is-rounded" href="https://github.com/hengxintx" target="_blank">
-                SEGUIR</a>
+                Follow</a>
         </div>
         
         
@@ -392,48 +403,12 @@
     
         
     
-        <div class="card widget">
-    <div class="card-content">
-        <div class="menu">
-        <h3 class="menu-label">
-            Links
-        </h3>
-        <ul class="menu-list">
-        
-            <li>
-                <a class="level is-mobile" href="https://hexo.io" target="_blank">
-                    <span class="level-left">
-                        <span class="level-item">Hexo</span>
-                    </span>
-                    <span class="level-right">
-                        <span class="level-item tag">hexo.io</span>
-                    </span>
-                </a>
-            </li>
-        
-            <li>
-                <a class="level is-mobile" href="https://github.com/ppoffice" target="_blank">
-                    <span class="level-left">
-                        <span class="level-item">PPOffice</span>
-                    </span>
-                    <span class="level-right">
-                        <span class="level-item tag">github.com</span>
-                    </span>
-                </a>
-            </li>
-        
-        </ul>
-        </div>
-    </div>
-</div>
-
-    
         
 <div class="card widget">
     <div class="card-content">
         <div class="menu">
             <h3 class="menu-label">
-                Categorias
+                Categories
             </h3>
             <ul class="menu-list">
             
@@ -442,119 +417,24 @@
     </div>
 </div>
     
-        
-    
-        <div class="card widget">
-    <div class="card-content">
-        <h3 class="menu-label">
-            Recientes
-        </h3>
-        
-        <article class="media">
-            
-            <a href="/2019/07/23/什么是语言模型/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-07-23T06:31:48.007Z">2019-07-23</time></div>
-                    <a href="/2019/07/23/什么是语言模型/" class="title has-link-black-ter is-size-6 has-text-weight-normal"></a>
-                    <p class="is-size-7 is-uppercase">
-                        
-                    </p>
-                </div>
-            </div>
-        </article>
-        
-        <article class="media">
-            
-            <a href="/2018/10/09/最大似然-从朴素贝叶斯谈起/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="最大似然-从朴素贝叶斯谈起">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2018-10-09T10:14:40.000Z">2018-10-09</time></div>
-                    <a href="/2018/10/09/最大似然-从朴素贝叶斯谈起/" class="title has-link-black-ter is-size-6 has-text-weight-normal">最大似然-从朴素贝叶斯谈起</a>
-                    <p class="is-size-7 is-uppercase">
-                        
-                    </p>
-                </div>
-            </div>
-        </article>
-        
-        <article class="media">
-            
-            <a href="/2018/10/08/hello-world/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="Hello World">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2018-10-08T03:49:46.920Z">2018-10-08</time></div>
-                    <a href="/2018/10/08/hello-world/" class="title has-link-black-ter is-size-6 has-text-weight-normal">Hello World</a>
-                    <p class="is-size-7 is-uppercase">
-                        
-                    </p>
-                </div>
-            </div>
-        </article>
-        
-        <article class="media">
-            
-            <a href="/2018/09/15/语言模型-从闲聊识别谈起/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="语言模型-从闲聊识别谈起">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2018-09-15T07:48:14.000Z">2018-09-15</time></div>
-                    <a href="/2018/09/15/语言模型-从闲聊识别谈起/" class="title has-link-black-ter is-size-6 has-text-weight-normal">语言模型-从闲聊识别谈起</a>
-                    <p class="is-size-7 is-uppercase">
-                        
-                    </p>
-                </div>
-            </div>
-        </article>
-        
-        <article class="media">
-            
-            <a href="/2018/09/01/聚类算法详解-从文本聚类谈起/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="聚类算法详解-从文本聚类谈起">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2018-09-01T06:31:27.000Z">2018-09-01</time></div>
-                    <a href="/2018/09/01/聚类算法详解-从文本聚类谈起/" class="title has-link-black-ter is-size-6 has-text-weight-normal">聚类算法详解-从文本聚类谈起</a>
-                    <p class="is-size-7 is-uppercase">
-                        
-                    </p>
-                </div>
-            </div>
-        </article>
-        
-    </div>
-</div>
-    
         <div class="card widget">
     <div class="card-content">
         <div class="menu">
         <h3 class="menu-label">
-            Archivos
+            Archives
         </h3>
         <ul class="menu-list">
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2019/10/">
+                <span class="level-start">
+                    <span class="level-item">October 2019</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">4</span>
+                </span>
+            </a>
+        </li>
         
         <li>
             <a class="level is-marginless" href="/archives/2019/07/">
@@ -573,7 +453,7 @@
                     <span class="level-item">October 2018</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">2</span>
+                    <span class="level-item tag">3</span>
                 </span>
             </a>
         </li>
@@ -584,7 +464,7 @@
                     <span class="level-item">September 2018</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">3</span>
+                    <span class="level-item tag">4</span>
                 </span>
             </a>
         </li>
@@ -598,9 +478,16 @@
     <div class="card-content">
         <div class="menu">
             <h3 class="menu-label">
-                Etiquetas
+                Tags
             </h3>
             <div class="field is-grouped is-grouped-multiline">
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/nlp/">
+                        <span class="tag">nlp</span>
+                        <span class="tag is-grey">2</span>
+                    </a>
+                </div>
                 
             </div>
         </div>
@@ -778,10 +665,10 @@ document.addEventListener('DOMContentLoaded', function () {
     (function (window) {
         var INSIGHT_CONFIG = {
             TRANSLATION: {
-                POSTS: 'Entradas',
+                POSTS: 'Posts',
                 PAGES: 'Pages',
-                CATEGORIES: 'Categorias',
-                TAGS: 'Etiquetas',
+                CATEGORIES: 'Categories',
+                TAGS: 'Tags',
                 UNTITLED: '(Untitled)',
             },
             CONTENT_URL: '/content.json',

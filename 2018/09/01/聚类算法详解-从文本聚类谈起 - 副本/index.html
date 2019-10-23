@@ -14,7 +14,7 @@
 <meta name="keywords" content="机器学习,自然语言处理,深度学习,概率论,微积分,线性代数">
 <meta property="og:type" content="article">
 <meta property="og:title" content="聚类算法详解-从文本聚类谈起">
-<meta property="og:url" content="https://hunterbrain.top/2018/09/01/聚类算法详解/index.html">
+<meta property="og:url" content="https://hunterbrain.top/2018/09/01/聚类算法详解-从文本聚类谈起 - 副本/index.html">
 <meta property="og:site_name" content="Heng Blog">
 <meta property="og:description" content="摘要无监督的将相似句聚类，所以需要对聚类算法有比较深入的研究，单纯的调用sklearn无法满足工作需求，故对其进行实现。本文主要分三部分，第一部分描述对层次聚类的总结(因为这是工作中最终选取的算法)，第二部分描述kmeans算法(谈聚类怎么能不谈kmeans)，第三部分描述神经网络的聚类算法">
 <meta property="og:locale" content="zh-Hans">
@@ -238,7 +238,7 @@
 
 
 
-<div class="column is-4-tablet is-3-desktop is-3-widescreen  has-order-1 column-left ">
+<div class="column is-4-tablet is-3-desktop is-3-widescreen  has-order-1 column-left is-sticky">
     
         
 <div class="card widget">
@@ -273,17 +273,17 @@
             <div class="level-item has-text-centered is-marginless">
                 <div>
                     <p class="heading">
-                        Entradas
+                        Posts
                     </p>
                     <p class="title has-text-weight-normal">
-                        6
+                        12
                     </p>
                 </div>
             </div>
             <div class="level-item has-text-centered is-marginless">
                 <div>
                     <p class="heading">
-                        Categorias
+                        Categories
                     </p>
                     <p class="title has-text-weight-normal">
                         0
@@ -293,10 +293,10 @@
             <div class="level-item has-text-centered is-marginless">
                 <div>
                     <p class="heading">
-                        Etiquetas
+                        Tag
                     </p>
                     <p class="title has-text-weight-normal">
-                        0
+                        1
                     </p>
                 </div>
             </div>
@@ -304,7 +304,7 @@
         
         <div class="level">
             <a class="level-item button is-link is-rounded" href="https://github.com/hengxintx" target="_blank">
-                SEGUIR</a>
+                Follow</a>
         </div>
         
         
@@ -325,48 +325,12 @@
     
         
     
-        <div class="card widget">
-    <div class="card-content">
-        <div class="menu">
-        <h3 class="menu-label">
-            Links
-        </h3>
-        <ul class="menu-list">
-        
-            <li>
-                <a class="level is-mobile" href="https://hexo.io" target="_blank">
-                    <span class="level-left">
-                        <span class="level-item">Hexo</span>
-                    </span>
-                    <span class="level-right">
-                        <span class="level-item tag">hexo.io</span>
-                    </span>
-                </a>
-            </li>
-        
-            <li>
-                <a class="level is-mobile" href="https://github.com/ppoffice" target="_blank">
-                    <span class="level-left">
-                        <span class="level-item">PPOffice</span>
-                    </span>
-                    <span class="level-right">
-                        <span class="level-item tag">github.com</span>
-                    </span>
-                </a>
-            </li>
-        
-        </ul>
-        </div>
-    </div>
-</div>
-
-    
         
 <div class="card widget">
     <div class="card-content">
         <div class="menu">
             <h3 class="menu-label">
-                Categorias
+                Categories
             </h3>
             <ul class="menu-list">
             
@@ -375,119 +339,24 @@
     </div>
 </div>
     
-        
-    
-        <div class="card widget">
-    <div class="card-content">
-        <h3 class="menu-label">
-            Recientes
-        </h3>
-        
-        <article class="media">
-            
-            <a href="/2019/07/23/什么是语言模型/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-07-23T06:31:48.007Z">2019-07-23</time></div>
-                    <a href="/2019/07/23/什么是语言模型/" class="title has-link-black-ter is-size-6 has-text-weight-normal"></a>
-                    <p class="is-size-7 is-uppercase">
-                        
-                    </p>
-                </div>
-            </div>
-        </article>
-        
-        <article class="media">
-            
-            <a href="/2018/10/09/最大似然-从朴素贝叶斯谈起/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="最大似然-从朴素贝叶斯谈起">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2018-10-09T10:14:40.000Z">2018-10-09</time></div>
-                    <a href="/2018/10/09/最大似然-从朴素贝叶斯谈起/" class="title has-link-black-ter is-size-6 has-text-weight-normal">最大似然-从朴素贝叶斯谈起</a>
-                    <p class="is-size-7 is-uppercase">
-                        
-                    </p>
-                </div>
-            </div>
-        </article>
-        
-        <article class="media">
-            
-            <a href="/2018/10/08/hello-world/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="Hello World">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2018-10-08T03:49:46.920Z">2018-10-08</time></div>
-                    <a href="/2018/10/08/hello-world/" class="title has-link-black-ter is-size-6 has-text-weight-normal">Hello World</a>
-                    <p class="is-size-7 is-uppercase">
-                        
-                    </p>
-                </div>
-            </div>
-        </article>
-        
-        <article class="media">
-            
-            <a href="/2018/09/15/语言模型-从闲聊识别谈起/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="语言模型-从闲聊识别谈起">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2018-09-15T07:48:14.000Z">2018-09-15</time></div>
-                    <a href="/2018/09/15/语言模型-从闲聊识别谈起/" class="title has-link-black-ter is-size-6 has-text-weight-normal">语言模型-从闲聊识别谈起</a>
-                    <p class="is-size-7 is-uppercase">
-                        
-                    </p>
-                </div>
-            </div>
-        </article>
-        
-        <article class="media">
-            
-            <a href="/2018/09/01/聚类算法详解-从文本聚类谈起/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="聚类算法详解-从文本聚类谈起">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2018-09-01T06:31:27.000Z">2018-09-01</time></div>
-                    <a href="/2018/09/01/聚类算法详解-从文本聚类谈起/" class="title has-link-black-ter is-size-6 has-text-weight-normal">聚类算法详解-从文本聚类谈起</a>
-                    <p class="is-size-7 is-uppercase">
-                        
-                    </p>
-                </div>
-            </div>
-        </article>
-        
-    </div>
-</div>
-    
         <div class="card widget">
     <div class="card-content">
         <div class="menu">
         <h3 class="menu-label">
-            Archivos
+            Archives
         </h3>
         <ul class="menu-list">
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2019/10/">
+                <span class="level-start">
+                    <span class="level-item">October 2019</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">4</span>
+                </span>
+            </a>
+        </li>
         
         <li>
             <a class="level is-marginless" href="/archives/2019/07/">
@@ -506,7 +375,7 @@
                     <span class="level-item">October 2018</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">2</span>
+                    <span class="level-item tag">3</span>
                 </span>
             </a>
         </li>
@@ -517,7 +386,7 @@
                     <span class="level-item">September 2018</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">3</span>
+                    <span class="level-item tag">4</span>
                 </span>
             </a>
         </li>
@@ -531,9 +400,16 @@
     <div class="card-content">
         <div class="menu">
             <h3 class="menu-label">
-                Etiquetas
+                Tags
             </h3>
             <div class="field is-grouped is-grouped-multiline">
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/nlp/">
+                        <span class="tag">nlp</span>
+                        <span class="tag is-grey">2</span>
+                    </a>
+                </div>
                 
             </div>
         </div>
@@ -711,10 +587,10 @@ document.addEventListener('DOMContentLoaded', function () {
     (function (window) {
         var INSIGHT_CONFIG = {
             TRANSLATION: {
-                POSTS: 'Entradas',
+                POSTS: 'Posts',
                 PAGES: 'Pages',
-                CATEGORIES: 'Categorias',
-                TAGS: 'Etiquetas',
+                CATEGORIES: 'Categories',
+                TAGS: 'Tags',
                 UNTITLED: '(Untitled)',
             },
             CONTENT_URL: '/content.json',
