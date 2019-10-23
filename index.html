@@ -185,7 +185,6 @@
 <p>例如，计算“今天能不能发货?”和”发货能今天不能”这两句话的ngram值。</p>
 <p>以词级别为例，分词之后的句子为: 今天\能\不能\发货 与发货\能\今天\不能?</p>
 <p>在本问题中，我选取人工客服聊天记录共100M作为训练预料，用来统计$n-gram$词频)各词的频率如下表所示:</p>
-<div class="table-container">
 <table>
 <thead>
 <tr>
@@ -195,8 +194,7 @@
 <th>词频</th>
 </tr>
 </thead>
-<tbody>
-<tr>
+<tbody><tr>
 <td>今天</td>
 <td>447</td>
 <td>今天能</td>
@@ -224,13 +222,12 @@
 <td>？</td>
 <td>3646</td>
 <td></td>
+<td></td>
 </tr>
-</tbody>
-</table>
-</div>
+</tbody></table>
 <p>这里还需对句子加入起始符号与终止符号(我加的是start与end，不加的话会损失起始与终止的信息)，于是在此基础上加入$count(start今天)$与$count(?end)$</p>
 <p>于是2-gram分值:$P(今天能不能发货？)=P(start)<em>P(今天|start)</em>P(能|今天)<em>P(不能|能)</em>P(发货|不能)<em>P(？|发货)</em>P(end|？)$ 根据条件概率$P(A|B)=P(AB)/P(B)$,所以</p>
-<p>$P(今天能不能发货？)=P(start今天)<em>P(今天能)</em>P(能不能)<em>P(不能发货)</em>(发货？)/（P(今天)<em>P(能)</em>P(不能)*P(发货)）$=</p>
+<p>$P(今天能不能发货？)=P(start今天)<em>P(今天能)<em>P(能不能)</em>P(不能发货)</em>(发货？)/（P(今天)<em>P(能)</em>P(不能)*P(发货)）$=</p>
 <p>而在这个问题中，取得该词的概率可以近似为该词词频数/总词频数，即$P(今天)=count(今天)/总词频数=447/6066\approx0.07$ 以此类推，</p>
 <p>这样我们可以得到两个句子各自成句的概率：</p>
 <p>$P(今天能不能发货？)=0.000031$</p>
@@ -538,7 +535,7 @@
             <div class="level-item has-text-centered is-marginless">
                 <div>
                     <p class="heading">
-                        Posts
+                        Entradas
                     </p>
                     <p class="title has-text-weight-normal">
                         6
@@ -548,7 +545,7 @@
             <div class="level-item has-text-centered is-marginless">
                 <div>
                     <p class="heading">
-                        Categories
+                        Categorias
                     </p>
                     <p class="title has-text-weight-normal">
                         0
@@ -558,7 +555,7 @@
             <div class="level-item has-text-centered is-marginless">
                 <div>
                     <p class="heading">
-                        Tags
+                        Etiquetas
                     </p>
                     <p class="title has-text-weight-normal">
                         0
@@ -569,7 +566,7 @@
         
         <div class="level">
             <a class="level-item button is-link is-rounded" href="https://github.com/hengxintx" target="_blank">
-                Follow</a>
+                SEGUIR</a>
         </div>
         
         
@@ -631,7 +628,7 @@
     <div class="card-content">
         <div class="menu">
             <h3 class="menu-label">
-                Categories
+                Categorias
             </h3>
             <ul class="menu-list">
             
@@ -645,7 +642,7 @@
         <div class="card widget">
     <div class="card-content">
         <h3 class="menu-label">
-            Recent
+            Recientes
         </h3>
         
         <article class="media">
@@ -750,7 +747,7 @@
     <div class="card-content">
         <div class="menu">
         <h3 class="menu-label">
-            Archives
+            Archivos
         </h3>
         <ul class="menu-list">
         
@@ -796,7 +793,7 @@
     <div class="card-content">
         <div class="menu">
             <h3 class="menu-label">
-                Tags
+                Etiquetas
             </h3>
             <div class="field is-grouped is-grouped-multiline">
                 
@@ -976,10 +973,10 @@ document.addEventListener('DOMContentLoaded', function () {
     (function (window) {
         var INSIGHT_CONFIG = {
             TRANSLATION: {
-                POSTS: 'Posts',
+                POSTS: 'Entradas',
                 PAGES: 'Pages',
-                CATEGORIES: 'Categories',
-                TAGS: 'Tags',
+                CATEGORIES: 'Categorias',
+                TAGS: 'Etiquetas',
                 UNTITLED: '(Untitled)',
             },
             CONTENT_URL: '/content.json',

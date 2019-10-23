@@ -163,6 +163,7 @@
 <h2 id="研究背景"><a href="#研究背景" class="headerlink" title="研究背景:"></a>研究背景:</h2><p>客服聊天记录中判断句子(这里是筛选出的含中文的句子，英文和符号及数字句子的处理可以在我的github中查看处理规则)是否为用户乱输的无意义的字词句</p>
 <h2 id="方法"><a href="#方法" class="headerlink" title="方法:"></a>方法:</h2><p>采用语言模型来判定句子的流畅度，判断是否成句。</p>
 <a id="more"></a>
+
 <h3 id="语言模型："><a href="#语言模型：" class="headerlink" title="语言模型："></a>语言模型：</h3><p>通俗来讲，语言模型就是用来计算一组字成为句子的概率的模型，也就是判断一句话是否随机的概率。</p>
 <p>另一个解释：语言模型是假设一门语言所有可能的句子服从一个概率分布，每个句子出现的概率加起来是1，那么语言模型的任务就是预测每个句子在语言中出现的概率，对于语言中常见的句子，一个好的语言模型应该得到相对高的概率，对不合语法的句子，计算出的概率则趋近于零。</p>
 <p>给定词语序列：$ S = W_1,W_2, …, W_k $，判断它成为句子的概率可表示为：$ P(S) = P(W_1,W_2,…,W_k) $</p>
@@ -182,7 +183,6 @@
 <p>例如，计算“我的退款怎么还没收到?” 的ngram值。</p>
 <p>以词级别为例，分词之后的句子为: 今天 能 不能 发货 ?</p>
 <p>例如在训练语料中(语料的选择在《数学之美》中也有聊到，在本问题中，我选取人工客服聊天记录共11G作为训练预料，用来统计$n-gram$词频)各词的频率如下表所示:</p>
-<div class="table-container">
 <table>
 <thead>
 <tr>
@@ -192,8 +192,7 @@
 <th>词频</th>
 </tr>
 </thead>
-<tbody>
-<tr>
+<tbody><tr>
 <td>今天</td>
 <td>4472107</td>
 <td>今天能</td>
@@ -221,19 +220,17 @@
 <td>？</td>
 <td>36461699</td>
 <td></td>
+<td></td>
 </tr>
-</tbody>
-</table>
-</div>
+</tbody></table>
 <p>在这里顺便提一句文本预处理，我在这个任务中没有做去除标点符号与停用词的操作，因为我觉得在这个任务中标点和停用词是有其作用的。所以只去除了空格与换行符与成对的符号例如：&lt;&gt;《》“”(详细预处理及统计请参考我的github)</p>
 <p>这里还需对句子加入起始符号与终止符号(我加的是start与end，不加的话会损失起始与终止的信息)，于是在此基础上加入$count(start今天)=$与$count(?end)=$ </p>
 <p>于是2-gram分值:$P(今天能不能发货？)=P(start)<em>P(今天|start)</em>P(能|今天)<em>P(不能|能)</em>P(发货|不能)<em>P(？|发货)</em>P(end|？)$ 根据条件概率$P(A|B)=P(AB)/P(B)$,所以</p>
-<p>$P(今天能不能发货？)=P(start今天)<em>P(今天能)</em>P(能不能)<em>P(不能发货)</em>(发货？)/（P(今天)<em>P(能)</em>P(不能)*P(发货)）$</p>
+<p>$P(今天能不能发货？)=P(start今天)<em>P(今天能)<em>P(能不能)</em>P(不能发货)</em>(发货？)/（P(今天)<em>P(能)</em>P(不能)*P(发货)）$</p>
 <p>而在这个问题中，取得该词的概率可以近似为该词词频数/总词频数，即$P(今天)=count(今天)/总词频数$</p>
 <p>$3-gram$ 在这里就不详细举例了，按公式来就好了</p>
 <h5 id="神经网络语言模型"><a href="#神经网络语言模型" class="headerlink" title="神经网络语言模型"></a>神经网络语言模型</h5><p>n-gram这种处理序列信息的方式，当n大于4时很难处理(google的模型好像用的是n=5的)而且提升效果很有限。另外n-gram并不能表示词与词之间的关联性。随着神经网络的兴起，基于神经网络的语言模型被发现，提供了另外一种语言模型思路。实际上，在深度学习中的时间序列模型，如RNN、LSTM、Bi-LSTM等，可以克服n-gram中无法关联距离较远的词的缺点。至于这些方法是如何克服ngram中n过大的问题，可以查看我后面的博客，对时间序列神经网络原理的理解。</p>
 <h6 id="one-hot"><a href="#one-hot" class="headerlink" title="one-hot"></a>one-hot</h6><p>在很久很久以前，大家使用计算机处理句子或文本时，使用简单明了的one-hot的形式来表示词，句子或篇章。one-hot方法构造简单，例如要表示一句话，首先统计文档中的全部词，将每个词作为一列，存在记为1，不存在记为0。上文中的例子”今天能不能发货?”可表示为：</p>
-<div class="table-container">
 <table>
 <thead>
 <tr>
@@ -245,8 +242,7 @@
 <th>?</th>
 </tr>
 </thead>
-<tbody>
-<tr>
+<tbody><tr>
 <td>今天</td>
 <td>1</td>
 <td>0</td>
@@ -286,9 +282,7 @@
 <td>0</td>
 <td>1</td>
 </tr>
-</tbody>
-</table>
-</div>
+</tbody></table>
 <p>这种词的表示方式很明显维度爆炸大，有多少词就有多少维，刚才11G的句子会有61亿多维，若表示一句话则只有几个维度为1，非常稀疏，且无法表示词之间的相关关系。</p>
 <p>优点就是可解释性强，模型简单。</p>
 <h6 id="Word2Vec"><a href="#Word2Vec" class="headerlink" title="Word2Vec"></a>Word2Vec</h6><p>为了克服one-hot表示的缺点</p>
@@ -405,7 +399,7 @@
             <div class="level-item has-text-centered is-marginless">
                 <div>
                     <p class="heading">
-                        Posts
+                        Entradas
                     </p>
                     <p class="title has-text-weight-normal">
                         6
@@ -415,7 +409,7 @@
             <div class="level-item has-text-centered is-marginless">
                 <div>
                     <p class="heading">
-                        Categories
+                        Categorias
                     </p>
                     <p class="title has-text-weight-normal">
                         0
@@ -425,7 +419,7 @@
             <div class="level-item has-text-centered is-marginless">
                 <div>
                     <p class="heading">
-                        Tags
+                        Etiquetas
                     </p>
                     <p class="title has-text-weight-normal">
                         0
@@ -436,7 +430,7 @@
         
         <div class="level">
             <a class="level-item button is-link is-rounded" href="https://github.com/hengxintx" target="_blank">
-                Follow</a>
+                SEGUIR</a>
         </div>
         
         
@@ -498,7 +492,7 @@
     <div class="card-content">
         <div class="menu">
             <h3 class="menu-label">
-                Categories
+                Categorias
             </h3>
             <ul class="menu-list">
             
@@ -512,7 +506,7 @@
         <div class="card widget">
     <div class="card-content">
         <h3 class="menu-label">
-            Recent
+            Recientes
         </h3>
         
         <article class="media">
@@ -617,7 +611,7 @@
     <div class="card-content">
         <div class="menu">
         <h3 class="menu-label">
-            Archives
+            Archivos
         </h3>
         <ul class="menu-list">
         
@@ -663,7 +657,7 @@
     <div class="card-content">
         <div class="menu">
             <h3 class="menu-label">
-                Tags
+                Etiquetas
             </h3>
             <div class="field is-grouped is-grouped-multiline">
                 
@@ -843,10 +837,10 @@ document.addEventListener('DOMContentLoaded', function () {
     (function (window) {
         var INSIGHT_CONFIG = {
             TRANSLATION: {
-                POSTS: 'Posts',
+                POSTS: 'Entradas',
                 PAGES: 'Pages',
-                CATEGORIES: 'Categories',
-                TAGS: 'Tags',
+                CATEGORIES: 'Categorias',
+                TAGS: 'Etiquetas',
                 UNTITLED: '(Untitled)',
             },
             CONTENT_URL: '/content.json',
