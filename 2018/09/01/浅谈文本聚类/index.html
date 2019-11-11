@@ -7,22 +7,22 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
 
-<title>聚类算法详解-从文本聚类谈起 - Heng Blog</title>
+<title>聚类算法详解-从文本聚类谈起 - Heng Blog</title>
 
 
-    <meta name="description" content="摘要无监督的将相似句聚类，所以需要对聚类算法有比较深入的研究，单纯的调用sklearn无法满足工作需求，故对其进行实现。本文主要分三部分，第一部分描述对层次聚类的总结(因为这是工作中最终选取的算法)，第二部分描述kmeans算法(谈聚类怎么能不谈kmeans)，第三部分描述神经网络的聚类算法">
+    <meta name="description" content="无监督的将相似句聚类，所以需要对聚类算法有比较深入的研究，单纯的调用sklearn无法满足工作需求，故对其进行实现。本文主要分三部分，第一部分描述对层次聚类的总结(因为这是工作中最终选取的算法)，第二部分描述kmeans算法(谈聚类怎么能不谈kmeans)，第三部分描述神经网络的聚类算法">
 <meta name="keywords" content="nlp">
 <meta property="og:type" content="article">
-<meta property="og:title" content="聚类算法详解-从文本聚类谈起">
-<meta property="og:url" content="https://hunterbrain.top/2018/09/01/聚类算法详解-从文本聚类谈起/index.html">
+<meta property="og:title" content="聚类算法详解-从文本聚类谈起">
+<meta property="og:url" content="https://hunterbrain.top/2018/09/01/浅谈文本聚类/index.html">
 <meta property="og:site_name" content="Heng Blog">
-<meta property="og:description" content="摘要无监督的将相似句聚类，所以需要对聚类算法有比较深入的研究，单纯的调用sklearn无法满足工作需求，故对其进行实现。本文主要分三部分，第一部分描述对层次聚类的总结(因为这是工作中最终选取的算法)，第二部分描述kmeans算法(谈聚类怎么能不谈kmeans)，第三部分描述神经网络的聚类算法">
+<meta property="og:description" content="无监督的将相似句聚类，所以需要对聚类算法有比较深入的研究，单纯的调用sklearn无法满足工作需求，故对其进行实现。本文主要分三部分，第一部分描述对层次聚类的总结(因为这是工作中最终选取的算法)，第二部分描述kmeans算法(谈聚类怎么能不谈kmeans)，第三部分描述神经网络的聚类算法">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="https://hunterbrain.top/images/og_image.png">
-<meta property="og:updated_time" content="2019-10-23T11:15:37.673Z">
+<meta property="og:updated_time" content="2019-11-11T08:03:05.612Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="聚类算法详解-从文本聚类谈起">
-<meta name="twitter:description" content="摘要无监督的将相似句聚类，所以需要对聚类算法有比较深入的研究，单纯的调用sklearn无法满足工作需求，故对其进行实现。本文主要分三部分，第一部分描述对层次聚类的总结(因为这是工作中最终选取的算法)，第二部分描述kmeans算法(谈聚类怎么能不谈kmeans)，第三部分描述神经网络的聚类算法">
+<meta name="twitter:title" content="聚类算法详解-从文本聚类谈起">
+<meta name="twitter:description" content="无监督的将相似句聚类，所以需要对聚类算法有比较深入的研究，单纯的调用sklearn无法满足工作需求，故对其进行实现。本文主要分三部分，第一部分描述对层次聚类的总结(因为这是工作中最终选取的算法)，第二部分描述kmeans算法(谈聚类怎么能不谈kmeans)，第三部分描述神经网络的聚类算法">
 <meta name="twitter:image" content="https://hunterbrain.top/images/og_image.png">
 
 
@@ -81,7 +81,7 @@
         <div class="navbar-brand is-flex-center">
             <a class="navbar-item navbar-logo" href="/">
             
-                <img src="/images/logo.svg" alt="聚类算法详解-从文本聚类谈起" height="28">
+                <img src="/images/logo.svg" alt="聚类算法详解-从文本聚类谈起" height="28">
             
             </a>
         </div>
@@ -143,7 +143,7 @@
                 <span class="level-item has-text-grey">
                     
                     
-                    11 minutes read (About 1654 words)
+                    11 minutes read (About 1648 words)
                 </span>
                 
                 
@@ -152,12 +152,11 @@
         
         <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
             
-                聚类算法详解-从文本聚类谈起
+                聚类算法详解-从文本聚类谈起
             
         </h1>
         <div class="content">
-            <p><img src="./image/cluster.png" alt="LanguageModel"></p>
-<h2 id="摘要"><a href="#摘要" class="headerlink" title="摘要"></a>摘要</h2><p>无监督的将相似句聚类，所以需要对聚类算法有比较深入的研究，单纯的调用sklearn无法满足工作需求，故对其进行实现。本文主要分三部分，第一部分描述对层次聚类的总结(因为这是工作中最终选取的算法)，第二部分描述kmeans算法(谈聚类怎么能不谈kmeans)，第三部分描述神经网络的聚类算法</p>
+            <p>无监督的将相似句聚类，所以需要对聚类算法有比较深入的研究，单纯的调用sklearn无法满足工作需求，故对其进行实现。本文主要分三部分，第一部分描述对层次聚类的总结(因为这是工作中最终选取的算法)，第二部分描述kmeans算法(谈聚类怎么能不谈kmeans)，第三部分描述神经网络的聚类算法</p>
 <a id="more"></a>
 
 <h2 id="算法详解"><a href="#算法详解" class="headerlink" title="算法详解"></a>算法详解</h2><p>层次聚类的步骤，终止条件分为两种，一种是聚到k类停止，一种是每两类之间的阈值大于某数。由于sklearn已经实现第一种方法，这里就不在赘述，主要分析一下第二种终止条件的实现及遇到的一些问题，全部代码请参考我的github。</p>
@@ -193,9 +192,9 @@
     <div class="level post-navigation is-flex-wrap is-mobile">
         
         <div class="level-start">
-            <a class="level level-item has-link-grey  article-nav-prev" href="/2018/10/08/hello-world/">
+            <a class="level level-item has-link-grey  article-nav-prev" href="/2018/10/09/最大似然-从朴素贝叶斯谈起/">
                 <i class="level-item fas fa-chevron-left"></i>
-                <span class="level-item">Hello World</span>
+                <span class="level-item">最大似然-从朴素贝叶斯谈起</span>
             </a>
         </div>
         
@@ -359,12 +358,23 @@
         </li>
         
         <li>
+            <a class="level is-marginless" href="/archives/2019/09/">
+                <span class="level-start">
+                    <span class="level-item">September 2019</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
             <a class="level is-marginless" href="/archives/2018/10/">
                 <span class="level-start">
                     <span class="level-item">October 2018</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">2</span>
+                    <span class="level-item tag">1</span>
                 </span>
             </a>
         </li>
@@ -402,7 +412,7 @@
             <div class="level-start has-text-centered-mobile">
                 <a class="footer-logo is-block has-mb-6" href="/">
                 
-                    <img src="/images/logo.svg" alt="聚类算法详解-从文本聚类谈起" height="28">
+                    <img src="/images/logo.svg" alt="聚类算法详解-从文本聚类谈起" height="28">
                 
                 </a>
                 <p class="is-size-7">
