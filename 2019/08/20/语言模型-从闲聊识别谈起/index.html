@@ -7,21 +7,22 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
 
-<title>Categories - Heng Blog</title>
+<title>语言模型-从闲聊识别谈起 - Heng Blog</title>
 
 
-    <meta name="description" content="业余写字爱好者">
+    <meta name="description" content="背景:本文由下面一轮对话引出： 你：“过大嘎达发的撒旦法而我却人是” 机器人：“您的输入语句不通，语文是数学老师教的吧！” 那么机器人到底是怎么判断出一句话语句是否通顺呢？在客服场景中又有什么实际应用呢？">
 <meta name="keywords" content="nlp">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Heng Blog">
-<meta property="og:url" content="https://hunterbrain.top/categories/index.html">
+<meta property="og:type" content="article">
+<meta property="og:title" content="语言模型-从闲聊识别谈起">
+<meta property="og:url" content="https://hunterbrain.top/2019/08/20/语言模型-从闲聊识别谈起/index.html">
 <meta property="og:site_name" content="Heng Blog">
-<meta property="og:description" content="业余写字爱好者">
+<meta property="og:description" content="背景:本文由下面一轮对话引出： 你：“过大嘎达发的撒旦法而我却人是” 机器人：“您的输入语句不通，语文是数学老师教的吧！” 那么机器人到底是怎么判断出一句话语句是否通顺呢？在客服场景中又有什么实际应用呢？">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="https://hunterbrain.top/images/og_image.png">
+<meta property="og:updated_time" content="2019-11-11T08:21:51.162Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Heng Blog">
-<meta name="twitter:description" content="业余写字爱好者">
+<meta name="twitter:title" content="语言模型-从闲聊识别谈起">
+<meta name="twitter:description" content="背景:本文由下面一轮对话引出： 你：“过大嘎达发的撒旦法而我却人是” 机器人：“您的输入语句不通，语文是数学老师教的吧！” 那么机器人到底是怎么判断出一句话语句是否通顺呢？在客服场景中又有什么实际应用呢？">
 <meta name="twitter:image" content="https://hunterbrain.top/images/og_image.png">
 
 
@@ -80,7 +81,7 @@
         <div class="navbar-brand is-flex-center">
             <a class="navbar-item navbar-logo" href="/">
             
-                <img src="/images/logo.svg" alt="Heng Blog" height="28">
+                <img src="/images/logo.svg" alt="语言模型-从闲聊识别谈起" height="28">
             
             </a>
         </div>
@@ -94,7 +95,7 @@
                 <a class="navbar-item"
                 href="/archives">归档</a>
                 
-                <a class="navbar-item is-active"
+                <a class="navbar-item"
                 href="/categories">分类</a>
                 
                 <a class="navbar-item"
@@ -130,50 +131,159 @@
         <div class="container">
             <div class="columns">
                 <div class="column is-8-tablet is-9-desktop is-9-widescreen has-order-2 column-main">
-<div class="card widget">
-    <div class="card-content">
-        <div class="menu">
-            <h3 class="menu-label">
-                Categories
-            </h3>
-            <ul class="menu-list">
-            <li>
-        <a class="level is-marginless" href="/categories/Python/">
-            <span class="level-start">
-                <span class="level-item">Python</span>
-            </span>
-            <span class="level-end">
-                <span class="level-item tag">1</span>
-            </span>
-        </a></li><li>
-        <a class="level is-marginless" href="/categories/机器学习/">
-            <span class="level-start">
-                <span class="level-item">机器学习</span>
-            </span>
-            <span class="level-end">
-                <span class="level-item tag">1</span>
-            </span>
-        </a></li><li>
-        <a class="level is-marginless" href="/categories/深度学习/">
-            <span class="level-start">
-                <span class="level-item">深度学习</span>
-            </span>
-            <span class="level-end">
-                <span class="level-item tag">2</span>
-            </span>
-        </a></li><li>
-        <a class="level is-marginless" href="/categories/自然语言理解/">
-            <span class="level-start">
-                <span class="level-item">自然语言理解</span>
-            </span>
-            <span class="level-end">
-                <span class="level-item tag">1</span>
-            </span>
-        </a></li>
-            </ul>
+<div class="card">
+    
+    <div class="card-content article ">
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2019-08-20T10:35:32.000Z">2019-08-20</time>
+                
+                <div class="level-item">
+                <a class="has-link-grey -link" href="/categories/自然语言理解/">自然语言理解</a>
+                </div>
+                
+                
+                <span class="level-item has-text-grey">
+                    
+                    
+                    11 minutes read (About 1616 words)
+                </span>
+                
+                
+            </div>
         </div>
+        
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                语言模型-从闲聊识别谈起
+            
+        </h1>
+        <div class="content">
+            <h2 id="背景"><a href="#背景" class="headerlink" title="背景:"></a>背景:</h2><p><strong>本文由下面一轮对话引出：</strong></p>
+<p>你：“过大嘎达发的撒旦法而我却人是”</p>
+<p>机器人：“您的输入语句不通，语文是数学老师教的吧！”</p>
+<p>那么机器人到底是怎么判断出一句话语句是否通顺呢？在客服场景中又有什么实际应用呢？</p>
+<a id="more"></a>
+
+<h2 id="方法"><a href="#方法" class="headerlink" title="方法:"></a>方法:</h2><p>客服场景中有时需要判断用户的问句是否为乱输的无意义的，返回“请认真聊天，不要乱输”比返回万能回复会显得更加的智能，也可以用在智能质检上，检测答案或者问句的编写是否合理。</p>
+<p>我们可以采用<strong>语言模型</strong>来判定句子的流畅度，并判断是否成句。</p>
+<h3 id="语言模型："><a href="#语言模型：" class="headerlink" title="语言模型："></a>语言模型：</h3><p>通俗来讲，语言模型就是用来计算一组字成为句子的概率的模型，也就是判断一句话是否随机的概率。</p>
+<p>另一个解释是：语言模型是假设一门语言所有可能的句子服从一个概率分布，每个句子出现的概率加起来是1，那么语言模型的任务就是预测每个句子在语言中出现的概率，对于语言中常见的句子，一个好的语言模型应该得到相对高的概率，对不合语法的句子，计算出的概率则趋近于零。</p>
+<p>给定词语序列：$ S = W_1,W_2, …, W_k $，判断它成为句子的概率可表示为：$ P(S) = P(W_1,W_2,…,W_k) $</p>
+<p>我们使用$ P(w_3|w_1,w_2)$, 表示词$ w_1,w_2$后面是词$ w_3$的概率，现在我们需要计算一整句话的概率，例如“我,爱,北京,天安门”,需要计算“我爱北京天安门“同时出现 的概率，即$ P(我爱北京天安门) = P(我)P(爱|我)P(北京|我爱)P(天安门|我爱北京)$，计算这个概率的模型就叫做语言模型(Language Model)，随后即可用概率的链式法则来评估这一组随机变量的联合概率。一般的：$P(S) = P(w_1,w_2,…,w_k) = \prod_{i=1}^k P(w_i|w_1,w_2,…,w_{k-1})$</p>
+<p>可这种方法会导致：</p>
+<ol>
+<li>参数空间过大, 试想按上面方式计算$P(w_5 |w_1 ,w_2 ,w_3 ,w_4 )$，这里$w_i$都有一个词典大小取值的可能，记作|V|，则该模型的参数个数是$|V|^5$，而且这还不包含$P(w_4 | w_1, w_2, w_3)$的个数，可以看到这样去计算条件概率会使语言模型参数个数过多而无法实用.(更为通俗的理解：还是以”我爱北京天安门“为例，$P(爱|我)$ 需要计算)</li>
+<li>数据非常稀疏，导致最大似然概率接近0.(为什么最大似然接近0，本人在另一篇中对此做了解释，链接:)</li>
+</ol>
+<h5 id="统计语言模型"><a href="#统计语言模型" class="headerlink" title="统计语言模型"></a>统计语言模型</h5><p>在统计语言模型中为了减少参数数量，基于马尔可夫假设，采用2-gram模型，即我们可以认为下一个词的出现仅依赖于他前面的一个词，因此二元模型简化为：</p>
+<p>$P(S) = P(w_1)\prod_{i=2}^kP(w_i|w_{i-1})$ </p>
+<p>在此基础上进行拓展可演化为$n-gram$模型，假定文本中的每个词$w_i$只和其前面$n-1$个词相关，这时$P(w_i|w_1,w_2,…w_{i-1})=P(w_i|w_{i-n+1},w_{i-n+2},…w_{i-1})$</p>
+<p>这称为$n-gram$模型，其中$n$表示当前单词依赖它前面单词的个数，通常$n$取2、3、4,在本任务中，我们对$n=2，3$的情况做了实验，且对分词与未分词的情况分别做了实验。最终在$2-gram$且不分词的情况下效果达到最优。究其原因，可能是在本任务中，若是用户输的乱序文本则该句中基本每两个字之间都不成词。</p>
+<p>$n-gram$ 模型的参数一般采用最大似然估计方法：</p>
+<p>$P(w_i|w_{i-1})=\frac{count(w_{i-1},w_i)}{count(w_{i-1]})}$ 其中，count(x)表示词x在语料中出现的次数。</p>
+<h6 id="例子"><a href="#例子" class="headerlink" title="例子"></a>例子</h6><p>以真实句子为例对模型做一般说明。</p>
+<p>例如，计算“今天能不能发货?”和”发货能今天不能”这两句话的ngram值。</p>
+<p>以词级别为例，分词之后的句子为: 今天\能\不能\发货 与发货\能\今天\不能?</p>
+<p>在本问题中，我选取人工客服聊天记录共100M作为训练预料，用来统计$n-gram$词频)各词的频率如下表所示:</p>
+<table>
+<thead>
+<tr>
+<th>词</th>
+<th>词频</th>
+<th>2-gram词</th>
+<th>词频</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>今天</td>
+<td>447</td>
+<td>今天能</td>
+<td>23</td>
+</tr>
+<tr>
+<td>能</td>
+<td>844</td>
+<td>能不能</td>
+<td>122</td>
+</tr>
+<tr>
+<td>不能</td>
+<td>481</td>
+<td>不能发货</td>
+<td>3</td>
+</tr>
+<tr>
+<td>发货</td>
+<td>501</td>
+<td>发货?</td>
+<td>20</td>
+</tr>
+<tr>
+<td>？</td>
+<td>3646</td>
+<td></td>
+<td></td>
+</tr>
+</tbody></table>
+<p>这里还需对句子加入起始符号与终止符号(我加的是start与end，不加的话会损失起始与终止的信息)，于是在此基础上加入$count(start今天)$与$count(?end)$</p>
+<p>于是2-gram分值:$P(今天能不能发货？)=P(start)<em>P(今天|start)</em>P(能|今天)<em>P(不能|能)</em>P(发货|不能)<em>P(？|发货)</em>P(end|？)$ 根据条件概率$P(A|B)=P(AB)/P(B)$,所以</p>
+<p>$P(今天能不能发货？)=P(start今天)<em>P(今天能)<em>P(能不能)</em>P(不能发货)</em>(发货？)/（P(今天)<em>P(能)</em>P(不能)*P(发货)）$=</p>
+<p>而在这个问题中，取得该词的概率可以近似为该词词频数/总词频数，即$P(今天)=count(今天)/总词频数=447/6066\approx0.07$ 以此类推，</p>
+<p>这样我们可以得到两个句子各自成句的概率：</p>
+<p>$P(今天能不能发货？)=0.000031$</p>
+<p>$P(发货能今天不能？)=0.0000000053$</p>
+<p>故而“今天能不能发货”比“发货能今天不能”更加流畅。</p>
+<p>进行预测概率时，除了统计语言模型外，目前使用较多的还有神经语言模型，这里就不详细展开了，大家感兴趣的话可以自己查查。</p>
+<h2 id="参考："><a href="#参考：" class="headerlink" title="参考："></a>参考：</h2><p><a href="https://blog.csdn.net/a635661820/article/details/43906731" target="_blank" rel="noopener">https://blog.csdn.net/a635661820/article/details/43906731</a></p>
+<p><a href="https://zhuanlan.zhihu.com/machinelearningpku" target="_blank" rel="noopener">https://zhuanlan.zhihu.com/machinelearningpku</a></p>
+<p>《数学之美》第三章 统计语言模型</p>
+<p><a href="https://juejin.im/post/598c1941f265da3e190da56b" target="_blank" rel="noopener">https://juejin.im/post/598c1941f265da3e190da56b</a></p>
+
+        </div>
+        
+        <div class="level is-size-7 is-uppercase">
+            <div class="level-start">
+                <div class="level-item">
+                    <span class="is-size-6 has-text-grey has-mr-7">#</span>
+                    <a class="has-link-grey -link" href="/tags/nlp/">nlp</a>
+                </div>
+            </div>
+        </div>
+        
+        
+        
     </div>
-</div></div>
+</div>
+
+
+
+
+
+<div class="card card-transparent">
+    <div class="level post-navigation is-flex-wrap is-mobile">
+        
+        <div class="level-start">
+            <a class="level level-item has-link-grey  article-nav-prev" href="/2019/09/01/浅谈文本表示/">
+                <i class="level-item fas fa-chevron-left"></i>
+                <span class="level-item">浅谈文本表示</span>
+            </a>
+        </div>
+        
+        
+        <div class="level-end">
+            <a class="level level-item has-link-grey  article-nav-next" href="/2018/10/21/Pandas基础/">
+                <span class="level-item">Pandas相关操作</span>
+                <i class="level-item fas fa-chevron-right"></i>
+            </a>
+        </div>
+        
+    </div>
+</div>
+
+
+</div>
                 
     
 
@@ -417,7 +527,7 @@
             <div class="level-start has-text-centered-mobile">
                 <a class="footer-logo is-block has-mb-6" href="/">
                 
-                    <img src="/images/logo.svg" alt="Heng Blog" height="28">
+                    <img src="/images/logo.svg" alt="语言模型-从闲聊识别谈起" height="28">
                 
                 </a>
                 <p class="is-size-7">

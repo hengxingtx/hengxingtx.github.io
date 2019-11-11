@@ -7,19 +7,19 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
 
-<title>Tag: nlp - Heng Blog</title>
+<title>文本分类 - Heng Blog</title>
 
 
     <meta name="description" content="相较于短文本，处理长文本时，需要更加精细的处理，这里针对不同长度的文本，分别做研究。 短文本分类数据集介绍在网上找了好久，最终决定使用DataFontain平台的互联网新闻情感分析竞赛数据集来作为这次短文本分类的训练用数据集。竞赛简介如下：本赛题目标为在庞大的数据集中精准的区分文本的情感极性，情感分为正中负三类。面对浩如烟海的新闻信息，精确识别蕴藏在其中的情感倾向，对舆情有效监控、预警及疏导，对舆">
-<meta name="keywords" content="机器学习,自然语言处理,深度学习,概率论,微积分,线性代数">
-<meta property="og:type" content="website">
+<meta name="keywords" content="nlp">
+<meta property="og:type" content="article">
 <meta property="og:title" content="文本分类">
-<meta property="og:url" content="https://hunterbrain.top/book/文本分类.html">
+<meta property="og:url" content="https://hunterbrain.top/2019/10/23/文本分类/index.html">
 <meta property="og:site_name" content="Heng Blog">
 <meta property="og:description" content="相较于短文本，处理长文本时，需要更加精细的处理，这里针对不同长度的文本，分别做研究。 短文本分类数据集介绍在网上找了好久，最终决定使用DataFontain平台的互联网新闻情感分析竞赛数据集来作为这次短文本分类的训练用数据集。竞赛简介如下：本赛题目标为在庞大的数据集中精准的区分文本的情感极性，情感分为正中负三类。面对浩如烟海的新闻信息，精确识别蕴藏在其中的情感倾向，对舆情有效监控、预警及疏导，对舆">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="https://hunterbrain.top/images/og_image.png">
-<meta property="og:updated_time" content="2019-11-11T08:04:27.335Z">
+<meta property="og:updated_time" content="2019-11-11T08:10:38.549Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="文本分类">
 <meta name="twitter:description" content="相较于短文本，处理长文本时，需要更加精细的处理，这里针对不同长度的文本，分别做研究。 短文本分类数据集介绍在网上找了好久，最终决定使用DataFontain平台的互联网新闻情感分析竞赛数据集来作为这次短文本分类的训练用数据集。竞赛简介如下：本赛题目标为在庞大的数据集中精准的区分文本的情感极性，情感分为正中负三类。面对浩如烟海的新闻信息，精确识别蕴藏在其中的情感倾向，对舆情有效监控、预警及疏导，对舆">
@@ -135,6 +135,25 @@
     
     <div class="card-content article ">
         
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2019-10-23T08:19:44.000Z">2019-10-23</time>
+                
+                <div class="level-item">
+                <a class="has-link-grey -link" href="/categories/深度学习/">深度学习</a>
+                </div>
+                
+                
+                <span class="level-item has-text-grey">
+                    
+                    
+                    20 minutes read (About 2970 words)
+                </span>
+                
+                
+            </div>
+        </div>
+        
         <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
             
                 文本分类
@@ -143,6 +162,8 @@
         <div class="content">
             <p>相较于短文本，处理长文本时，需要更加精细的处理，这里针对不同长度的文本，分别做研究。</p>
 <h2 id="短文本分类"><a href="#短文本分类" class="headerlink" title="短文本分类"></a>短文本分类</h2><h3 id="数据集介绍"><a href="#数据集介绍" class="headerlink" title="数据集介绍"></a>数据集介绍</h3><p>在网上找了好久，最终决定使用DataFontain平台的<a href="https://www.datafountain.cn/competitions/350" target="_blank" rel="noopener">互联网新闻情感分析</a>竞赛数据集来作为这次短文本分类的训练用数据集。竞赛简介如下：<br>本赛题目标为在庞大的数据集中精准的区分文本的情感极性，情感分为正中负三类。面对浩如烟海的新闻信息，精确识别蕴藏在其中的情感倾向，对舆情有效监控、预警及疏导，对舆情生态系统的良性发展有着重要的意义。</p>
+<a id="more"></a>
+
 <p>数据集示例如下：</p>
 <figure class="highlight python hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">import</span> pandas <span class="hljs-keyword">as</span> pd</span><br><span class="line">train_data = pd.read_csv(<span class="hljs-string">"data/Train_DataSet.csv"</span>)</span><br><span class="line">train_data.head(<span class="hljs-number">5</span>)</span><br></pre></td></tr></table></figure>
 
@@ -294,6 +315,15 @@
 <figure class="highlight python hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
         </div>
         
+        <div class="level is-size-7 is-uppercase">
+            <div class="level-start">
+                <div class="level-item">
+                    <span class="is-size-6 has-text-grey has-mr-7">#</span>
+                    <a class="has-link-grey -link" href="/tags/nlp/">nlp</a>
+                </div>
+            </div>
+        </div>
+        
         
         
     </div>
@@ -302,6 +332,20 @@
 
 
 
+
+<div class="card card-transparent">
+    <div class="level post-navigation is-flex-wrap is-mobile">
+        
+        
+        <div class="level-end">
+            <a class="level level-item has-link-grey  article-nav-next" href="/2019/09/01/浅谈文本表示/">
+                <span class="level-item">浅谈文本表示</span>
+                <i class="level-item fas fa-chevron-right"></i>
+            </a>
+        </div>
+        
+    </div>
+</div>
 
 
 </div>
